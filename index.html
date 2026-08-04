@@ -1,17 +1,550 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>ROLIZ - ТЕХНОШЕФ</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#111111" name="theme-color"/>
+<title>Техника ROLIZ в сети магазинов ТЕХНОШЕФ</title>
+<style>
+    :root {
+      --yellow: #ffd400;
+      --yellow-dark: #e0ba00;
+      --black: #0d0d0d;
+      --black-2: #151515;
+      --black-3: #202020;
+      --line: #343434;
+      --white: #ffffff;
+      --gray: #b8b8b8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(rgba(255, 212, 0, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 212, 0, 0.025) 1px, transparent 1px),
+        var(--black);
+      background-size: 24px 24px;
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .page {
+      width: min(100%, 820px);
+      margin: 0 auto;
+      padding: 18px 12px 38px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 18px;
+      padding: 30px 22px 26px;
+      border: 2px solid var(--yellow);
+      background:
+        linear-gradient(135deg, rgba(255, 212, 0, 0.16), transparent 47%),
+        var(--black-2);
+      box-shadow: 7px 7px 0 var(--yellow);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      top: -38px;
+      right: -30px;
+      width: 145px;
+      height: 145px;
+      border: 18px solid rgba(255, 212, 0, 0.07);
+      transform: rotate(45deg);
+    }
+
+    .hero::after {
+      right: 0;
+      bottom: 0;
+      width: 90px;
+      height: 8px;
+      background: var(--yellow);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      max-width: 690px;
+      margin: 0;
+      font-size: clamp(28px, 6vw, 48px);
+      line-height: 1.03;
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+    }
+
+    h1 span {
+      color: var(--yellow);
+    }
+
+    .hero p {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 16px 0 0;
+      color: #d7d7d7;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .online {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 24px 0 22px;
+      padding: 15px 16px;
+      border-left: 5px solid var(--yellow);
+      background: var(--black-2);
+    }
+
+    .online strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    .online span {
+      color: var(--gray);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .online a {
+      flex: 0 0 auto;
+      padding: 11px 14px;
+      border: 1px solid var(--yellow);
+      color: var(--yellow);
+      font-size: 12px;
+      font-weight: 900;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .region {
+      margin-top: 28px;
+    }
+
+    .region-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 12px;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .region-title::before {
+      content: "";
+      width: 9px;
+      height: 34px;
+      background: var(--yellow);
+      box-shadow: 5px 0 0 rgba(255, 212, 0, 0.18);
+    }
+
+    .region-count {
+      margin-left: auto;
+      color: #777;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .store-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .store {
+      position: relative;
+      overflow: hidden;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(255, 212, 0, 0.055), transparent 54%),
+        var(--black-2);
+    }
+
+    .store::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 38px;
+      height: 4px;
+      background: var(--yellow);
+    }
+
+    .store-city {
+      margin: 0 0 7px;
+      color: var(--yellow);
+      font-size: 17px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .store-address {
+      margin: 0 0 14px;
+      color: #e4e4e4;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px;
+      border: 1px solid var(--yellow);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.25px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--black-3);
+    }
+
+    .button-call {
+      background: var(--yellow);
+      color: var(--black);
+    }
+
+    .button-call:hover {
+      background: var(--yellow-dark);
+    }
+
+    .footer {
+      margin-top: 32px;
+      padding: 18px 14px 0;
+      border-top: 2px solid var(--yellow);
+      color: #8d8d8d;
+      font-size: 11px;
+      line-height: 1.55;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        padding-right: 8px;
+        padding-left: 8px;
+      }
+
+      .hero {
+        padding: 25px 17px 23px;
+        box-shadow: 5px 5px 0 var(--yellow);
+      }
+
+      .online {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .online a {
+        text-align: center;
+      }
+
+      .actions {
+        grid-template-columns: 1fr;
+      }
+
+      .region-title {
+        font-size: 18px;
+      }
+
+      .region-count {
+        display: none;
+      }
+    }
+  
+
+    .region {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      background: var(--black-2);
+    }
+
+    .region summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .region summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .region-title {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0;
+      padding: 16px 52px 16px 16px;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .region-title::after {
+      content: "+";
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-52%);
+      color: var(--yellow);
+      font-size: 28px;
+      font-weight: 400;
+    }
+
+    .region[open] .region-title::after {
+      content: "−";
+    }
+
+    .region .store-list {
+      padding: 0 10px 10px;
+      border-top: 1px solid var(--line);
+    }
+
+    .region .store {
+      margin-top: 10px;
+    }
+</style>
 </head>
-
-<body style="background:#111;color:white;font-family:Arial;text-align:center;padding:60px;">
-
-<h1 style="color:#FFD400;">Техника ROLIZ</h1>
-
-<h2>в сети магазинов ТЕХНОШЕФ</h2>
-
-<p>Если вы видите эту страницу — сайт работает 🎉</p>
-
+<body>
+<main class="page">
+<section class="hero">
+<div class="eyebrow">Где купить</div>
+<h1>Техника <span>ROLIZ</span><br/>в сети магазинов ТЕХНОШЕФ</h1>
+<p>Выберите ближайший населённый пункт. Для каждого магазина доступен маршрут и звонок одним нажатием.</p>
+</section>
+<section class="online">
+<div>
+<strong>Интернет-магазин Заказ43.ру</strong>
+<span>Контакты и информация о сети</span>
+</div>
+<a href="https://www.zakaz43.ru/contacts/" rel="noopener noreferrer" target="_blank">
+        Перейти на сайт
+      </a>
+</section>
+<details class="region" open=""><summary><h2 class="region-title">
+        Кировская область
+        <span class="region-count">13 магазинов</span>
+</h2></summary><div class="store-list">
+<article class="store">
+<h3 class="store-city">Омутнинск</h3>
+<p class="store-address">ул. Свободы, д. 3</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/omutninsk/geo/70030076305094239" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332256496">8 (8332) 256-496</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Яранск</h3>
+<p class="store-address">ул. Кирова, д. 28</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/yaransk/geo/70030076305480811/tab/inside" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332256476">8 (8332) 256-476</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Котельнич</h3>
+<p class="store-address">ул. Кирова, д. 17</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/kotelnich/geo/70030076144636884" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332256492">8 (8332) 256-492</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Советск</h3>
+<p class="store-address">ул. Ленина, д. 68</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/sovetsk-kirov-region/geo/70030076295804474" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332256479">8 (8332) 256-479</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Белая Холуница</h3>
+<p class="store-address">ул. Ленина, д. 20</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/belaya-holunica/geo/70030076297939936/tab/inside" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332256490">8 (8332) 256-490</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Кирс</h3>
+<p class="store-address">ул. Кирова, д. 21</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/kirs/geo/70030076207709783/tab/inside" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332256491">8 (8332) 256-491</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Зуевка</h3>
+<p class="store-address">пл. Базарная, д. 1а</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/zuevka/geo/70030076207734566" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332256498">8 (8332) 256-498</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Мураши</h3>
+<p class="store-address">ул. Ленина, д. 25</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/murashi/geo/70030076138248081" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332256494">8 (8332) 256-494</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Уржум</h3>
+<p class="store-address">ул. Кирова, д. 40</p>
+<div class="actions">
+<a class="button" href="https://yandex.ru/maps/20030/urzhum/house/ulitsa_kirova_40/YUkYdgdiSUEEQFttfX1wcnxjZw==/?ll=50.002043%2C57.113003&amp;z=17" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332256495">8 (8332) 256-495</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Ленинское</h3>
+<p class="store-address">пгт Ленинское, ул. Тотмянина, д. 3а</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/geo/70030076383911561" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332256426">8 (8332) 256-426</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Свеча</h3>
+<p class="store-address">пгт Свеча, ул. К. Маркса, д. 10</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/geo/70030076229328619" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332255776">8 (8332) 255-776</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Юрья</h3>
+<p class="store-address">пгт Юрья, ул. Лермонтова, д. 6</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/geo/70030076300328331" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332256493">8 (8332) 256-493</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Афанасьево</h3>
+<p class="store-address">пгт Афанасьево, ул. Красных Партизан, д. 14</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/firm/70000001069217296/53.254162%2C58.864029" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78332255772">8 (8332) 255-772</a>
+</div>
+</article>
+</div></details>
+<details class="region" open=""><summary><h2 class="region-title">
+        Республика Марий Эл
+        <span class="region-count">3 магазина</span>
+</h2></summary><div class="store-list">
+<article class="store">
+<h3 class="store-city">Сернур</h3>
+<p class="store-address">пгт Сернур, ул. Советская, д. 48</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/geo/70030076424721190" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78362232919">8 (8362) 232-919</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Параньга</h3>
+<p class="store-address">пгт Параньга, ул. Тукаевская, д. 62</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/inside/70030076320945789/geo/70030076424910538/49.4017%2C56.706424" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78362232918">8 (8362) 232-918</a>
+</div>
+</article>
+<article class="store">
+<h3 class="store-city">Мари-Турек</h3>
+<p class="store-address">пгт Мари-Турек, ул. Комсомольская, д. 33</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/geo/70030076429766217" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78362232935">8 (8362) 232-935</a>
+</div>
+</article>
+</div></details>
+<details class="region" open=""><summary><h2 class="region-title">
+        Нижегородская область
+        <span class="region-count">1 магазин</span>
+</h2></summary><div class="store-list">
+<article class="store">
+<h3 class="store-city">Шахунья</h3>
+<p class="store-address">ул. Гагарина, д. 15</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/shahunya/geo/70030076200344169" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78315222902">8 (83152) 2-29-02</a>
+</div>
+</article>
+</div></details>
+<details class="region" open=""><summary><h2 class="region-title">
+        Республика Коми
+        <span class="region-count">1 магазин</span>
+</h2></summary><div class="store-list">
+<article class="store">
+<h3 class="store-city">Объячево</h3>
+<p class="store-address">с. Объячево, ул. Мира, д. 109</p>
+<div class="actions">
+<a class="button" href="https://2gis.ru/search/%D1%81.%20%D0%9E%D0%B1%D1%8A%D1%8F%D1%87%D0%B5%D0%B2%D0%BE%2C%20%D1%83%D0%BB.%20%D0%9C%D0%B8%D1%80%D0%B0%2C%20109/geo/70030076403132053" rel="noopener noreferrer" target="_blank">Построить маршрут</a>
+<a class="button button-call" href="tel:+78212400909">8 (8212) 40-09-09</a>
+</div>
+</article>
+</div></details>
+<footer class="footer">
+      Наличие конкретных моделей и актуальную стоимость техники уточняйте непосредственно в выбранном магазине.
+    </footer>
+</main>
 </body>
 </html>
